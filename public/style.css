@@ -205,3 +205,41 @@ body {
  font-size: 15px;
 
 }
+
+.battlesearchbar{
+  z-index: 2;
+ position: relative;
+ height: auto;
+ -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+ padding: 10px;
+ font-size: 15px;
+
+}
+.searchButton{
+ margin-top: 10px;
+ padding: 10px;
+ font-size: 16px;
+ 
+}
+
+.vote{
+  z-index: 2;
+ position: relative;
+ height: auto;
+ -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+ padding: 10px;
+ font-size: 15px;
+}
+
+.vote:hover{
+  color: #01F84B;
+  text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
