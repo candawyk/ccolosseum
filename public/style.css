@@ -10,9 +10,16 @@ body {
 a {
  text-decoration: none;
 }
+
 div.login.card{
   padding:100px;
 }
+
+div.rcard{
+  padding:100px;
+}
+
+
 .cent{
  margin: 0;
  position: absolute;
@@ -74,7 +81,7 @@ a:focus {
  
  
 #pageBackground {
- background-color: #3D3D3D
+ background-color: #cccbcb
 }
  
 * {
@@ -215,6 +222,7 @@ body {
          box-sizing: border-box;
  padding: 10px;
  font-size: 15px;
+ text-align: center;
 
 }
 .searchButton{
