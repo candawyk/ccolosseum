@@ -1,0 +1,148 @@
+
+
+/* Base CSS */
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+  margin: 0;
+  background-color: #eee;
+}
+
+a {
+  text-decoration: none;
+}
+
+.site-title {
+  margin: 0;
+  padding: 10px 20px;
+  font-size: 30px;
+  font-weight: 100;
+  background-color: #A8A8A8;
+  color: #000000;
+}
+
+.navbar {
+  background-color: #7A7A7A;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.navlist {
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.navitem {
+  display: inline-block;
+}
+
+a {
+  color: #343434;
+}
+
+a:hover,
+a:focus {
+  color: #F07221;
+}
+
+a:focus {
+  outline: none;
+}
+
+.navlink a {
+  padding: 8px 10px;
+  display: inline-block;
+}
+
+
+#pageBackground {
+  background-color: #3D3D3D
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.f_row {
+  display: flex;
+}
+
+.f_column {
+  flex: 50%;
+  margin: 10px 10px 10px 10px
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* The dropdown container */
+.dropdown {
+  overflow: hidden;
+  margin: 0 0 0 0px;
+  padding: 0;
+  display: inline-block;
+}
+
