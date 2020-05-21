@@ -10,7 +10,9 @@ body {
 a {
  text-decoration: none;
 }
- 
+div.login.card{
+  padding:100px;
+}
 .cent{
  margin: 0;
  position: absolute;
