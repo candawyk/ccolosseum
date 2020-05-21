@@ -11,6 +11,15 @@ a {
   text-decoration: none;
 }
 
+.cent{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+ }
+
 .site-title {
   margin: 0;
   padding: 10px 20px;
@@ -34,6 +43,14 @@ a {
 .navitem {
   display: inline-block;
 }
+
+.ava_box{
+	margin: 10px 10px 10px 10px;
+}
+.ava_pic{
+ width:120px;
+ height:120px;
+ }
 
 a {
   color: #343434;
