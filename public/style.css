@@ -235,6 +235,42 @@ body {
  font-size: 15px;
 }
 
+#Signin-button:hover{
+  color: #01F84B;
+  text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 5px 25px rgba(70, 226, 31, 0.4);
+}
+
+div.registerPage{
+  padding:100px;
+  color:white;
+}
+
+#searchButt:hover{
+  color: #22ACEC;
+  text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 5px 25px rgba(31, 35, 226, 0.4);
+}
+
+#registerbutt:hover{
+  color: #22EC33;
+  text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 5px 25px rgba(24, 161, 59, 0.4);
+
+}
+
 .vote:hover{
   color: #01F84B;
   text-shadow:0px 0px 30px #fdec6e;
@@ -242,4 +278,5 @@ body {
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
+  box-shadow: 0 5px 25px rgba(70, 226, 31, 0.4);
 }
