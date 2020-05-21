@@ -157,7 +157,6 @@ body {
 .dropdown:hover .dropdown-content {
  display: block;
 }
-/* The dropdown container */
 
 .login-page {
   z-index: 2;
