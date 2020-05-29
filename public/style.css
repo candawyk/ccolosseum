@@ -20,6 +20,11 @@ div.login.card{
   padding:100px;
 }
 
+div.account.card{
+  padding: 5px, 35px;
+
+}
+
 div.rcard{
   padding:100px;
 }
