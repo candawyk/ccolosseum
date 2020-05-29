@@ -21,7 +21,9 @@ var port = process.env.PORT || 3000;
 app.engine('handlebars', expressHB({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.set('mysql', mysql);
+app.use('/battle/display', require('./viewBattles.js'));
 app.use('/', require('./critterBattle.js'));
+
 //setup the Date object for timeouts
 var date = new Date();
 
@@ -44,11 +46,11 @@ var date = new Date();
   app.get("/account", function (req, res) {
     res.status(200).render('account');
   });
-
+/*
   app.get("/battle/display", function (req, res) {
     res.status(200).render('battle_display');
   });
-
+*/
   app.get("/battle/create", function (req, res) {
     res.status(200).render('battle_create');
   });

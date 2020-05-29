@@ -7,11 +7,21 @@
   		<div class="column">
 			<image src="../cat.jpeg" class="ava_pic">
     			<div class="card">
+						{{#each critter}}
+						Critter one name : {{Name1}} <br>
+						Critter one size : {{Size_one}} <br>
+						Critter one quantity : {{Quantity_one}} <br>
+						Votes for critter one : {{votes_one}}
+						{{/each}}
+				{{!
+
 				Critter one name : $Critter_one <br>
 				Critter one size : $Critter_one_size <br>
 				Critter one quantity : $Critter_one_quanitity <br>
 				Votes for critter one : $Critter_one_votes
-			</div>
+
+			}}
+					</div>
   		</div>
 		<div class="column">
                         <div class="card">
@@ -26,11 +36,18 @@
                 <div class="column">
                         <image src="../cat.jpeg" class="ava_pic">
                         <div class="card">
-				Critter two name : $Critter_two <br>
+													{{#each critter}}
+													Critter one name : {{Name2}} <br>
+													Critter one size : {{Size_two}} <br>
+													Critter one quantity : {{Quantity_two}} <br>
+													Votes for critter one : {{votes_two}}
+													{{/each}}
+			{{!	Critter two name : $Critter_two <br>
 				Critter two size : $Critter_two_size <br>
 				Critter two quantity : $Critter_two_quanitity <br>
 				Votes for critter two : $Critter_two_votes
-                        </div>
+			}}
+					              </div>
                 </div>
                 <div class="column">
                         <div class="card">
@@ -46,11 +63,17 @@
                 <div class="column">
                         <div class="card">Comment Section</div>
                         <div class="card">
+												{{#each comment}}
+												<div class="card">
 
-                        <input type="text" class="comment" placeholder="Comment Body"><br>
-                        <button class="like">Like</button>
-                        <button class="dislike">Dislike</button>
+									       	<input type="text" class="comment" placeholder= {{comment_text}}><br>
+									        <button class="like">Like</button>
+									        <button class="dislike">Dislike</button>
+
+									       	</div>
+												{{/each}}
 			</div>
+		{{!
 			<div class="card">
 
                         <input type="text" class="comment" placeholder="Comment Body"><br>
@@ -72,6 +95,7 @@
                         <button class="like">Like</button>
                         <button class="dislike">Dislike</button>
                         </div>
+											}}
                 </div>
         </div>
 
