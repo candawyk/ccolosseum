@@ -41,21 +41,21 @@ div.rcard{
  
 
 div.column{
-  background-color:#22c1c3
+  background-color:#2299c3
 }
 
 .site-title {
  margin: 0;
  padding: 10px 20px;
- font-size: 30px;
- font-weight: 100;
- background: rgb(34,193,195);
-background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
- color: #000000;
+ font-size: 50px;
+ font-weight: 1000;
+background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+ color: linear-gradient(22deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);;
 }
  
 .navbar {
- background-color: #2fb38b;
+ background-color: #2299c3;
  font-size: 18px;
  line-height: 22px;
 }
@@ -65,6 +65,8 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%
  padding: 0;
 }
  
+
+
 .navitem {
  display: inline-block;
 }
@@ -83,7 +85,14 @@ a {
  
 a:hover,
 a:focus {
- color: #F07221;
+ color: rgba(222,181,92,1);
+   text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  font-weight:1000;
+  
 }
  
 a:focus {
@@ -97,12 +106,12 @@ a:focus {
  
 
 div.f_row{
-  background-color:#22c1c3
+  background-color:#2299c3
 }
 
 #pageBackground {
-background: rgb(34,193,195);
-background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+background: rgb(34,153,195);
+background: linear-gradient(176deg, rgba(34,153,195,1) 0%, rgba(222,181,92,1) 100%);
 }
  
 * {
