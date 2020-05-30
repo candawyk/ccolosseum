@@ -2,11 +2,17 @@
 
 	<div class="f_row">
 	<div class="f_column">
-
  	<div class="row">
   		<div class="column">
     			<div class="card">New Battles</div>
   		</div>
+					{{#each newBattle}}
+					<div class="column">
+							<div class="card">{{Name1}} vs {{Name2}}</div>
+					</div>
+					{{/each}}
+	</div>
+	{{!
   		<div class="column">
     			<div class="card">..</div>
   		</div>
@@ -17,23 +23,29 @@
 			<div class="card">..</div>
 		</div>
 	</div>
+}}
 	</div>
 
-        <div class="f_column">
-
-        <div class="row">
-                <div class="column">
-                        <div class="card">Popular Battles</div>
-                </div>
-                <div class="column">
-                        <div class="card">..</div>
-                </div>
-                <div class="column">
-                        <div class="card">..</div>
-                </div>
-                <div class="column">
-                        <div class="card">..</div>
-                </div>
+  <div class="f_column">
+  <div class="row">
+        <div class="column">
+          <div class="card">Popular Battles</div>
+        </div>
+				{{#each popBattle}}
+				<div class="column">
+						<div class="card">{{Name1}} vs {{Name2}}</div>
+				</div>
+				{{/each}}
+  {{!<div class="column">
+          <div class="card">..</div>
+        </div>
+  <div class="column">
+          <div class="card">..</div>
+        </div>
+          <div class="column">
+          <div class="card">..</div>
+        </div>
+			}}
         </div>
         </div>
         </div>

@@ -1,16 +1,18 @@
- 
- 
+
+
 /* Base CSS */
 body {
  font-family: Roboto, Helvetica, sans-serif;
  margin: 0;
  background-color: #fff;
 }
+
  
 
 .site-title{
   font:fantasy;
 }
+
 
 a {
  text-decoration: none;
@@ -44,6 +46,7 @@ div.column{
   background-color:#2299c3
 }
 
+
 .site-title {
  margin: 0;
  padding: 10px 20px;
@@ -53,24 +56,22 @@ background: rgb(2,0,36);
 background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
  color: linear-gradient(22deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);;
 }
- 
+
 .navbar {
  background-color: #2299c3;
  font-size: 18px;
  line-height: 22px;
 }
- 
+
 .navlist {
  margin: 0 0 0 20px;
  padding: 0;
 }
- 
-
 
 .navitem {
  display: inline-block;
 }
- 
+
 .ava_box{
   margin: 10px 10px 10px 10px;
 }
@@ -78,11 +79,11 @@ background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba
 width:120px;
 height:120px;
 }
- 
+
 a {
  color: #343434;
 }
- 
+
 a:hover,
 a:focus {
  color: rgba(222,181,92,1);
@@ -94,11 +95,11 @@ a:focus {
   font-weight:1000;
   
 }
- 
+
 a:focus {
  outline: none;
 }
- 
+
 .navlink a {
  padding: 8px 10px;
  display: inline-block;
@@ -109,45 +110,46 @@ div.f_row{
   background-color:#2299c3
 }
 
+
 #pageBackground {
 background: rgb(34,153,195);
 background: linear-gradient(176deg, rgba(34,153,195,1) 0%, rgba(222,181,92,1) 100%);
 }
- 
+
 * {
  box-sizing: border-box;
 }
- 
+
 body {
  font-family: Arial, Helvetica, sans-serif;
 }
- 
+
 .f_row {
  display: flex;
 }
- 
+
 .f_column {
  flex: 50%;
  margin: 10px 10px 10px 10px
 }
- 
+
 /* Float four columns side by side */
 .column {
  float: left;
  width: 100%;
  padding: 10px 10px 10px 10px;
 }
- 
+
 /* Remove extra left and right margins, due to padding in columns */
 .row {margin: 0 -5px;}
- 
+
 /* Clear floats after the columns */
 .row:after {
  content: "";
  display: table;
  clear: both;
 }
- 
+
 /* Style the counter cards */
 .card {
  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
@@ -155,7 +157,7 @@ body {
  text-align: center;
  background-color: #f1f1f1;
 }
- 
+
 /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {
  .column {
@@ -164,7 +166,7 @@ body {
    margin-bottom: 20px;
  }
 }
- 
+
 /* Dropdown content (hidden by default) */
 .dropdown-content {
  display: none;
@@ -174,7 +176,7 @@ body {
  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
  z-index: 1;
 }
- 
+
 /* Links inside the dropdown */
 .dropdown-content a {
  float: none;
@@ -184,24 +186,17 @@ body {
  display: block;
  text-align: left;
 }
- 
+
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
  background-color: #ddd;
 }
- 
+
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
  display: block;
 }
-/* The dropdown container */
-.dropdown {
- overflow: hidden;
- margin: 0 0 0 0px;
- padding: 0;
- display: inline-block;
-}
- 
+
 .login-page {
   z-index: 2;
  position: relative;
@@ -212,12 +207,12 @@ body {
  padding: 10px;
  font-size: 16px;
 }
- 
+
 .btn-block{
  margin-top: 10px;
  padding: 10px;
  font-size: 16px;
- 
+
 }
 
 .critterone{

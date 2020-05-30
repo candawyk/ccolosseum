@@ -1,4 +1,5 @@
 <main>
+	<form id = "addBattle" action = "/battle/create" method = "post">
 
 	<div class="f_row">
 	<div class="f_column">
@@ -7,10 +8,10 @@
   		<div class="column">
 			<image src="../cat.jpeg" class="ava_pic">
     			<div class="card">
-				<input type="text" class="critterone" placeholder="Enter the critter's name"> <br>
-				<input type="text" class="critterone" placeholder="Enter your critter's size"> <br>
-				<input type="text" class="critterone" placeholder="Enter how many critter there are"> <br>
-				<input type="text" class="critterone" placeholder="Supply an animal image link">
+				<input type="text" name = "crit1" class="critterone" placeholder="Enter the critter's name"> <br>
+				<input type="text" name = "size1" class="critterone" placeholder="Enter your critter's size"> <br>
+				<input type="text" name = "num1" class="critterone" placeholder="Enter how many critter there are"> <br>
+				<input type="text" name = "link1" class="critterone" placeholder="Supply an animal image link">
 			</div>
   		</div>
 	</div>
@@ -21,10 +22,10 @@
                 <div class="column">
                         <image src="../cat.jpeg" class="ava_pic">
                         <div class="card">
-				<input type="text" class="crittertwo" placeholder="Enter the critter's name"> <br>
-				<input type="text" class="crittertwo" placeholder="Enter your critter's size"> <br>
-				<input type="text" class="crittertwo" placeholder="Enter how many critter there are"> <br>
-				<input type="text" class="crittertwo" placeholder="Supply an animal image link">
+				<input type="text" name = "crit2" class="crittertwo" placeholder="Enter the critter's name"> <br>
+				<input type="text" name = "size2" class="crittertwo" placeholder="Enter your critter's size"> <br>
+				<input type="text" name = "num2" class="crittertwo" placeholder="Enter how many critter there are"> <br>
+				<input type="text" name= "link2" class="crittertwo" placeholder="Supply an animal image link">
 			</div>
                 </div>
         </div>
@@ -34,11 +35,12 @@
 
 	<div class="row">
                 <div class="column">
-                        <div class="card">
-                        <button>Publish!</button>
+											<input type = "submit" value = "Publish!">
+                      {{!  <div class="card">}}
+                      {{!  <button>Publish!</button>}}
 			</div>
                 </div>
         </div>
-
+	</form>
 
 </main>
