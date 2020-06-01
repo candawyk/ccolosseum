@@ -11,6 +11,7 @@ module.exports = function(){
             res.end();
           }
           context.newBattle = results;
+	  console.log("--" + results);
           console.log(context)
           complete();
       });

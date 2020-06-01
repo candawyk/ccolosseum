@@ -11,7 +11,7 @@ var bodyParse = require('body-parser');
 var fs = require('fs');
 
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 42077;
 
 //setup handlebars
 app.engine('handlebars', expressHB({ defaultLayout: 'main' }));
