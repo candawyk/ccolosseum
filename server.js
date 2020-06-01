@@ -10,10 +10,6 @@ var bodyParse = require('body-parser');
 
 var fs = require('fs');
 
-var updateJsonFile = require('update-json-file');
-var filePath = "./scoreBoard.json";
-
-
 var app = express();
 var port = process.env.PORT || 3000;
 

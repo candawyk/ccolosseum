@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getCritters( res, mysql, context, complete){
-        console.log("You asked me for some CRITTLESRRS?")
+//        console.log("You asked me for some CRITTLESRRS?")
         var query = "SELECT (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_one) AS Name1, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_two) AS Name2 FROM Takes_part_in T";
           mysql.pool.query(query, function(error, results, fields){
           if(error){

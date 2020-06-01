@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getComments( res, mysql, context, complete){
-        console.log("You asked me for some COMMENTS?")
+//        console.log("You asked me for some COMMENTS?")
         var query = "SELECT * FROM Comment_of F INNER JOIN Comments C on F.comment_id = C.comment_id WHERE F.battle = (SELECT battle_id FROM Battle ORDER BY battle_id DESC LIMIT 1)";
           mysql.pool.query(query, function(error, results, fields){
           if(error){
