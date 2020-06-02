@@ -29,6 +29,19 @@ module.exports = function(){
       });
     }
 
+    function getImage(res,mysql,context,complete){
+      var query = "SELECT (SELECT image_location FROM Avatar WHERE av_id = (SELECT av_id FROM Critter_has_a H WHERE T.critter_one = H.critter)) AS img1, (SELECT image_location FROM Avatar WHERE av_id = (SELECT av_id FROM Critter_has_a H WHERE  T.critter_two = H.critter)) AS img2 FROM Takes_part_in T, Battle B WHERE T.battle = (SELECT D.battle_id FROM Battle D ORDER BY D.battle_id DESC LIMIT 1) ORDER BY B.battle_id DESC LIMIT 1"
+      mysql.pool.query(query, function(error, results, fields){
+      if(error){
+        res.write(JSON.stringify(error))
+        res.end();
+      }
+      context.link = results;
+      console.log(context)
+      complete();
+      });
+    }
+
     router.get('/', function(req,res){
       callbackCount = 0;
       //console.log("HEYWHRIU")
@@ -36,9 +49,10 @@ module.exports = function(){
       var mysql = req.app.get('mysql');
       getComments(res, mysql, context, complete);
       getCrit(res, mysql, context, complete);
+      getImage(res, mysql, context, complete);
       function complete(){
         callbackCount++;
-        if(callbackCount == 2){
+        if(callbackCount == 3){
           res.render('battle_display',context);
         }
       }
