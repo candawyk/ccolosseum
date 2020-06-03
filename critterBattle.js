@@ -4,7 +4,9 @@ module.exports = function(){
 
     function getCritters( res, mysql, context, complete){
 //        console.log("You asked me for some CRITTLESRRS?")
-        var query = "SELECT (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_one) AS Name1, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_two) AS Name2 FROM Takes_part_in T";
+        var query = "SELECT T.battle as id, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_one) AS Name1,  (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_two) AS Name2 FROM Takes_part_in T ORDER BY T.id DESC"
+        //var query = "SELECT (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_one) AS Name1, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_two) AS Name2 FROM Takes_part_in T ORDER BY T.id DESC";
+        //var query = "SELECT (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_one) AS Name1, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_two) AS Name2 FROM Takes_part_in T";
           mysql.pool.query(query, function(error, results, fields){
           if(error){
             res.write(JSON.stringify(error))
@@ -18,7 +20,7 @@ module.exports = function(){
     }
 
     function getPopCritters(res, mysql, context, complete){
-        var query = "SELECT (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_one) AS Name1, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_two) AS Name2 FROM Takes_part_in T";
+        var query = "SELECT T.battle as id, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_one) AS Name1, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_two) AS Name2 FROM Takes_part_in T";
         var count = 0;
         mysql.pool.query(query, function(error, results, fields){
           if(error){
