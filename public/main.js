@@ -1,6 +1,6 @@
 
 //the users id (AKA cookie)
-var userID = 0;
+var userID = -1;
 
 
 
@@ -16,7 +16,7 @@ function refreshIDs(){
 
 function clearTheCookies(){
   console.log("++Force Clear the cookies");
-  userID = 0;
+  userID = -1;
   window.sessionStorage.setItem("userID", userID);
 }
 
@@ -31,44 +31,22 @@ function getContentFromURL(index) {
   }
 }
 
-function getUserID(){
+function getUserID_acnt(){
 
   console.log("Getting User ID");
   refreshIDs();
-  //create the AJAX object
-  var request = new XMLHttpRequest();
   //check to see if the user already has a cookie before requesting a new one
   console.log("userID = ", userID);
-  /*if(userID == 0){
-    //request the user ID from the server
-    var reqURL = "/getCookie/"+name;
-    request.open("POST", reqURL);
-
-    request.addEventListener('load', function (event) {
-      var message = event.target.response;
-      if (event.target.status != 200) {
-        alert("Error Retreiving Cookie: " + message);
-      }
-      else{
-        //found a game!
-        console.log("==New Cookie:", message);
-        userID = message;
-        window.sessionStorage.setItem("userID", userID);
-        changePage("/init/"+userID+"/wait");
-      }
-    }
-    );
-
-    request.send();
-  }
-  else if(name != ""){
-    changePage("/init/"+userID+"/wait");
+  if(userID == -1){
+    //transfer the user to the login page
+    var reqURL = "/login"
+    changePage(reqURL);
   }
   else{
-    changePage("/");
-  }*/
+	  var reqURL = "/account/" + userID;
+    changePage(reqURL);
+  }
 
-  //perhaps here change the page to account?
 
 }
 
@@ -126,10 +104,10 @@ window.addEventListener('DOMContentLoaded', function () {
     clearCookies.addEventListener('click', clearTheCookies);
   }
 
-  var waitPage = document.getElementById('wait');
-  if(waitPage){
-    //waitPage.addEventListener('load', searchForGame);
-    searchForGame();
+  var acountPage = document.getElementById('acnt_page');
+  if(acountPage){
+	  console.log("ACNT PAGE");
+    getUserID_acnt();
   }
 
 });
@@ -137,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function () {
 window.onload = function () {
     if (window.sessionStorage.getItem("hasCodeRunBefore") == null) {
         console.log("++setting ID's for the first time");
-        userID = 0;
+        userID = -1;
         window.sessionStorage.setItem("userID", userID);
     }
 }

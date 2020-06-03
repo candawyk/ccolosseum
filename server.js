@@ -19,8 +19,9 @@ app.set('view engine', 'handlebars');
 app.set('mysql', mysql);
 app.use(bodyParse.urlencoded({extended:true}));
 app.use('/battle/display', require('./viewBattles.js'));
-app.use('/battle/create', require('./startBattle.js'))
+app.use('/battle/create', require('./startBattle.js'));
 app.use('/', require('./critterBattle.js'));
+app.use('/login/verify', require('./login_handlr.js'));
 
 //setup the Date object for timeouts
 var date = new Date();
