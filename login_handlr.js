@@ -2,29 +2,46 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
-    function getAcount( res, mysql, context){
-//        console.log("You asked me for some CRITTLESRRS?")
+    function getAcount( res, mysql, req, res, login){
           var query = "SELECT User_id FROM Usr WHERE screen_name=? AND password=?"
-	  var creds = ["winghenge", "abcdefg"];
+	  var creds = [req.body.sn, req.body.pass];
+	  console.log([req.body.sn, req.body.pass]);
           sql = mysql.pool.query(query, creds, function(error, results, fields){
 		  if (error){
 		  	res.write(JSON.stringify(error));
 		 	 res.end();
 	  	  }
-		  console.log(results);
+		 
+		  if ( typeof results[0] != 'undefined'){
+			  UID =  results[0].User_id;
+			  login(res, UID);
+		  }
+		  else{
+			  login(res, -1);
+		  }
  	  });
 
 	
       }
     
 
-    router.get('/', function(req,res){
+    router.post('/', function(req,res){
       var context = {};
       var mysql = req.app.get('mysql');
-      getAcount(res, mysql, context);
-      res.render('account',context);
-	//res.render('homePage', context);
+      var UID;
+      getAcount(res, mysql, req, res, function(res, UID){
+	      console.log(UID);
+	      context.UID=UID;	      
+	      res.render('login',context);
       });
+
+      });
+
+    router.get('/', function(req,res){
+	    var context = {};
+	    context.UID = -1;
+	    res.render('login',context);
+    });
     
     return router;
 }();

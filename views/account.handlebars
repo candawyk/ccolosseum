@@ -1,17 +1,19 @@
 <main>
-	<div id="acnt_page"></div>
+	
+	<form id="acntPop" action = '/account/view' method="post">
 
+	<input name="UID" visibility: hidden id="acnt_page" type="number" value=-2>
 	<div class="row">
 		<div class="column">
 			<div class="account card">
 
-	<h1>$Screen_name</h1>
+	<h1>{{sc}}</h1>
 	
 	<div class="ava_box">
-		<img src="cat.jpeg" class="ava_pic">
+		<img src={{path}} class="ava_pic">
 	</div>
 
-	<textarea> Bio </textarea>
+	<textarea> {{bio}} </textarea>
 
 	<br>
 
@@ -21,5 +23,5 @@
 	</div>
 	</div>
 	</div>
-
+	</form>
 </main>

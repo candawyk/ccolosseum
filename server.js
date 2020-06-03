@@ -21,12 +21,11 @@ app.use(bodyParse.urlencoded({extended:true}));
 app.use('/battle/display', require('./viewBattles.js'));
 app.use('/battle/create', require('./startBattle.js'));
 app.use('/', require('./critterBattle.js'));
-app.use('/login/verify', require('./login_handlr.js'));
+app.use('/login', require('./login_handlr.js'));
+app.use('/account/view/', require('./user_account'));
 
 //setup the Date object for timeouts
 var date = new Date();
-
-
 
 //====================
 //Server Functionality
@@ -37,14 +36,17 @@ var date = new Date();
   app.get("/registration", function (req, res) {
     res.status(200).render('registration');
   });
+  app.get("/account/load", function (req, res) {
+	      res.status(200).render('load_account');
+	        });
 
-  app.get("/login", function (req, res) {
+/*  app.get("/login", function (req, res) {
     res.status(200).render('login');
-  });
+  });*/
 
-  app.get("/account", function (req, res) {
-    res.status(200).render('account');
-  });
+//  app.get("/account", function (req, res) {
+  //  res.status(200).render('account');
+  //});
 /*
   app.get("/battle/display", function (req, res) {
     res.status(200).render('battle_display');

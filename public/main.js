@@ -12,6 +12,7 @@ var userID = -1;
 
 function refreshIDs(){
   userID = window.sessionStorage.getItem("userID");
+  console.log("REFRESHED ID " + userID);
 }
 
 function clearTheCookies(){
@@ -34,21 +35,39 @@ function getContentFromURL(index) {
 function getUserID_acnt(){
 
   console.log("Getting User ID");
-  refreshIDs();
+  function checkForID(callback){
+	  refreshIDs();
+	  callback(null);
+  }
+  checkForID(function(foo){
   //check to see if the user already has a cookie before requesting a new one
-  console.log("userID = ", userID);
-  if(userID == -1){
-    //transfer the user to the login page
-    var reqURL = "/login"
-    changePage(reqURL);
-  }
-  else{
-	  var reqURL = "/account/" + userID;
-    changePage(reqURL);
-  }
+	  console.log("userID = ", userID);
+	  if(userID == -1){
+	    //transfer the user to the login page
+	    var reqURL = "/login"
+//	    changePage(reqURL);
+	  }
+	  else{
+		  var reqURL = "/account/view/" + userID;
+		  var load = document.getElementById('acntPop');
+		  if (load){
+		
+			  load.submit();
+		  }
+//	    changePage(reqURL);
+	  }
+  });
 
 
 }
+
+function logout(){
+	function lgo(callback){
+		window.sessionStorage.setItem("userID", -1);
+		callback();
+	}
+	lgo(function(){changePage("/");});
+}	
 
 function changePage(URL){
   window.location.href = /*window.location.hostname + */ URL;
@@ -89,33 +108,66 @@ window.addEventListener('DOMContentLoaded', function () {
     acceptBtn.addEventListener('click', getName);
   }
 
-  var cancelBtn = document.getElementById('modal-cancel-button');
-  if(cancelBtn){
-    cancelBtn.addEventListener('click', hideModal);
+  var logoutBtn = document.getElementById('lgbtn');
+  if(logoutBtn){
+    logoutBtn.addEventListener('click', logout);
   }
 
-  var exitBtn = document.getElementById('modal-close-button');
-  if(exitBtn){
-    exitBtn.addEventListener('click', hideModal);
+  var goToAcnt = document.getElementById('goToAcnt');
+  if(goToAcnt){
+	  function reDir(callback){
+		  refreshIDs();
+		  callback();
+	}
+	reDir(function(){	  
+		  if(userID == -1){
+		  goToAcnt.addEventListener('click',function(){changePage("/login");});
+	  }
+	  else{
+		  var reqURL = "/account/load/";
+		  goToAcnt.addEventListener('click',function(){changePage(reqURL);});
+	  }
+	});
+
   }
 
-  var clearCookies = document.getElementById('clear-cookie-button');
-  if(clearCookies){
-    clearCookies.addEventListener('click', clearTheCookies);
+  var login = document.getElementById('userIdGetter');
+  if(login){
+	  function login_time(callback){
+		  console.log(document.getElementById('userIdGetter').getAttribute('data-value'));
+	  	  userID = document.getElementById('userIdGetter').getAttribute('data-value');
+	          window.sessionStorage.setItem("userID", userID);
+		  callback(null);
+	  }
+	  if ( document.getElementById('userIdGetter').getAttribute('data-value') != -1){
+		  function saveID(callback){
+			var UID = document.getElementById('userIdGetter').getAttribute('data-value');
+		  	window.sessionStorage.setItem("userID", UID);
+			callback(UID)
+		  }
+		  saveID(function(UID){
+			var reqURL = "/account/view/";
+		  	login_time(function(foo){changePage(reqURL);});
+		  });
+	  }
+
   }
 
-  var acountPage = document.getElementById('acnt_page');
-  if(acountPage){
-	  console.log("ACNT PAGE");
-    getUserID_acnt();
+  var acountPageL = document.getElementById('acnt_page_l');
+  if(acountPageL){
+	  console.log("ACNT PAGE LOAD");
+	  function updatePageID(callback){
+		  document.getElementById('acnt_page_l').value = userID;
+		  callback();
+	}
+        updatePageID(function(){
+    		getUserID_acnt();
+    });
+
   }
 
 });
 
 window.onload = function () {
-    if (window.sessionStorage.getItem("hasCodeRunBefore") == null) {
-        console.log("++setting ID's for the first time");
-        userID = -1;
-        window.sessionStorage.setItem("userID", userID);
-    }
+	    refreshIDs();
 }
