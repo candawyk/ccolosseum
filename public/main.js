@@ -172,6 +172,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
   }
 
+  var battle_create = document.getElementById('battle_create_usr');
+  if(battle_create){
+    document.getElementById('battle_create_usr').value = userID;
+
+  }
 
 
 
