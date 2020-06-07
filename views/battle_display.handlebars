@@ -3,6 +3,8 @@
 	<div class="f_row">
 		<div class="f_column">
 
+			<form id="upOne" action = '/battle/display/vote' method="post">
+			<input name="UID" visibility: hidden id="battle_display_usr" type="number" value=-2>
 			<div class="row">
 				<div class="column">
 					{{#each link}}
@@ -10,14 +12,19 @@
 					<image src="../cat.jpeg" class="ava_pic"> }}
 						<div class="card">
 
-							{{#each critter}} Critter one name : {{Name1}} <br> Critter one size : {{Size_one}} <br> Critter one quantity : {{Quantity_one}}
-							<br> Votes for critter one : {{votes_one}} {{/each}} {{! Critter one name : $Critter_one <br> Critter one size : $Critter_one_size
+							{{#each critter}}
+							<input name="BID" visibility: hidden id="battle_id" type="number" value={{battle_id}}>
+							Critter one name : {{Name1}} <br>
+							Critter one size : {{Size_one}} <br>
+							Critter one quantity : {{Quantity_one}} <br>
+							Votes for critter one : {{votes_one}}
+							{{/each}} {{! Critter one name : $Critter_one <br> Critter one size : $Critter_one_size
 							<br> Critter one quantity : $Critter_one_quanitity <br> Votes for critter one : $Critter_one_votes }}
 						</div>
 				</div>
 				<div class="column">
 					<div class="card">
-						<button class="vote"> Vote!</button>
+						<button name = "vouch" value = "0" class="vote"> Vote!</button>
 					</div>
 				</div>
 			</div>
@@ -37,13 +44,19 @@
 				</div>
 				<div class="column">
 					<div class="card">
-						<button class="vote">Vote!</button>
+						<button name = "vouch" value = "1" class="vote">Vote!</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</div>
+</form>
+
+	<div class="error">
+		{{messages.error}}
+	</div>
+
 
 	<div class="row">
 		<div class="column">
