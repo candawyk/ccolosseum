@@ -3,6 +3,8 @@
 	<div class="f_row">
 	<div class="f_column">
 
+	<form id="upOne" action = '/battle/display/vote' method="post">
+	<input name="UID" visibility: hidden id="battle_display_usr" type="number" value=-2>
  	<div class="row">
   		<div class="column">
 				{{#each link}}
@@ -13,6 +15,7 @@
     			<div class="card">
 
 						{{#each critter}}
+						<input name="BID" visibility: hidden id="battle_id" type="number" value={{battle_id}}>
 						Critter one name : {{Name1}} <br>
 						Critter one size : {{Size_one}} <br>
 						Critter one quantity : {{Quantity_one}} <br>
@@ -30,11 +33,13 @@
   		</div>
 		<div class="column">
                         <div class="card">
-                        	<button class="vote"> Vote!</button>
+                        	<button name = "vouch" value = "0" class="vote"> Vote!</button>
 			</div>
                 </div>
 	</div>
 	</div>
+
+
 	<div class="f_column">
 
         <div class="row">
@@ -59,14 +64,19 @@
                 </div>
                 <div class="column">
                         <div class="card">
-                                <button class="vote">Vote!</button>
+                                <button name = "vouch" value = "1" class="vote">Vote!</button>
                         </div>
                 </div>
         </div>
         </div>
 
 	</div>
+	</form>
 
+	<div class="error">
+		{{messages.error}}
+	</div>
+	
 	<div class="row">
                 <div class="column">
                         <div class="card">Comment Section</div>

@@ -69,6 +69,7 @@ module.exports = function(){
         //console.log(results)
         complete();
       });
+
     }
 
     function getImg(res, mysql, context, id, complete){
@@ -86,6 +87,12 @@ module.exports = function(){
       });
     }
 
+    /*function checkAct(res, mysql, context, id, complete){
+      if (req.body.UID == '' || req.body.UID == -1){
+        complete();
+      }
+    }
+*/
     router.get('/:id', function(req,res){
       callbackCount= 0;
       var context = {};
@@ -101,9 +108,9 @@ module.exports = function(){
       }
     });
 
+
     router.get('/', function(req,res){
       callbackCount = 0;
-      //console.log("HEYWHRIU")
       var context = {};
       var mysql = req.app.get('mysql');
       getComments(res, mysql, context, complete);
@@ -116,5 +123,62 @@ module.exports = function(){
         }
       }
     });
+
+    router.post('/vote',function(req,res){
+      //var creds = [req.body.UID];
+      //console.log(creds)
+      //console.log([req.body.vouch])
+      //console.log([req.body.BID])
+      callbackCount = 0;
+      var context = {};
+      var mysql = req.app.get('mysql');
+
+      if (req.body.UID == '' || req.body.UID == -1){
+        req.flash('error', 'Please login first to vote');
+        getCritter(res, mysql, context, req.body.BID, complete);
+        getCom(res, mysql, context, req.body.BID, complete);
+        getImg(res, mysql, context, req.body.BID, complete);
+        function complete(){
+          callbackCount++;
+          if (callbackCount == 3){
+            res.render('battle_display', context);
+          }
+        }
+      }
+      else {
+        var query = "SELECT usr FROM Votes_for WHERE usr = ? AND battle = ?"
+        var inserts = [req.body.UID, req.body.BID];
+        mysql.pool.query(query, inserts, function(error, results, fields){
+          if(error){
+            res.write(JSON.stringify(error))
+            res.end();
+          }
+          if (results.length > 0){
+            req.flash('error', 'You already voted for this battle');
+            getCritter(res, mysql, context, req.body.BID, complete);
+            getCom(res, mysql, context, req.body.BID, complete);
+            getImg(res, mysql, context, req.body.BID, complete);
+            function complete(){
+              callbackCount++;
+              if (callbackCount == 3){
+                res.render('battle_display', context);
+              }
+            }
+          }
+          else{
+            var query = "INSERT INTO Votes_for (liked, battle, usr) VALUES (?,?,?)";
+            var inserts = [req.body.vouch, req.body.BID, req.body.UID];
+            mysql.pool.query(query, inserts, function(error, results, fields){
+              if(error){
+                res.write(JSON.stringify(error))
+                res.end();
+              }
+            });
+            res.redirect('/battle/display/' + req.body.BID);
+          }
+        });
+      }
+    });
+
     return router;
 }();

@@ -1,4 +1,3 @@
-
 var path = require('path');
 var express = require('express');
 
@@ -7,15 +6,25 @@ var mysql = require('./dbcon.js');
 var expressHB = require('express-handlebars');
 
 var bodyParse = require('body-parser');
-
+var flash = require('express-flash');
+var session = require('express-session');
 var fs = require('fs');
 
 var app = express();
-var port = process.env.PORT || 42077;
+var port = process.env.PORT || 3002;
 
 //setup handlebars
 app.engine('handlebars', expressHB({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+app.use(session({
+  secret: 'nothing',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(flash());
+
 app.set('mysql', mysql);
 app.use(bodyParse.urlencoded({extended:true}));
 app.use('/battle/display', require('./viewBattles.js'));
@@ -23,6 +32,7 @@ app.use('/battle/create', require('./startBattle.js'));
 app.use('/', require('./critterBattle.js'));
 app.use('/login', require('./login_handlr.js'));
 app.use('/account/view/', require('./user_account'));
+
 
 //setup the Date object for timeouts
 var date = new Date();

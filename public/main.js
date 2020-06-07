@@ -1,4 +1,3 @@
-
 //the users id (AKA cookie)
 var userID = -1;
 
@@ -51,7 +50,7 @@ function getUserID_acnt(){
 		  var reqURL = "/account/view/" + userID;
 		  var load = document.getElementById('acntPop');
 		  if (load){
-		
+
 			  load.submit();
 		  }
 //	    changePage(reqURL);
@@ -67,7 +66,7 @@ function logout(){
 		callback();
 	}
 	lgo(function(){changePage("/");});
-}	
+}
 
 function changePage(URL){
   window.location.href = /*window.location.hostname + */ URL;
@@ -119,7 +118,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		  refreshIDs();
 		  callback();
 	}
-	reDir(function(){	  
+	reDir(function(){
 		  if(userID == -1){
 		  goToAcnt.addEventListener('click',function(){changePage("/login");});
 	  }
@@ -159,12 +158,23 @@ window.addEventListener('DOMContentLoaded', function () {
 	  function updatePageID(callback){
 		  document.getElementById('acnt_page_l').value = userID;
 		  callback();
-	}
-        updatePageID(function(){
-    		getUserID_acnt();
+	   }
+      updatePageID(function(){
+    	getUserID_acnt();
     });
+  }
+
+  var battle_display = document.getElementById('battle_display_usr');
+  if(battle_display){
+  //  alert("HI");
+    console.log("BATTLE DISPLAY");
+    document.getElementById('battle_display_usr').value = userID;
 
   }
+
+
+
+
 
 });
 

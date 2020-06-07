@@ -6,7 +6,9 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.17.1",
+    "express-flash": "0.0.2",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.17.1",
     "handlebars": "^4.0.11",
     "mysql": "^2.18.1",
     "update-json-file": "^1.1.1"

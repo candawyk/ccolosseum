@@ -7,7 +7,7 @@ body {
  background-color: #fff;
 }
 
- 
+
 
 .site-title{
   font:fantasy;
@@ -40,7 +40,7 @@ div.rcard{
  -ms-transform: translate(-50%, -50%);
  transform: translate(-50%, -50%);
 }
- 
+
 
 div.column{
   background-color:#2299c3
@@ -93,7 +93,7 @@ a:focus {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   font-weight:1000;
-  
+
 }
 
 a:focus {
@@ -104,7 +104,7 @@ a:focus {
  padding: 8px 10px;
  display: inline-block;
 }
- 
+
 
 div.f_row{
   background-color:#2299c3
@@ -254,7 +254,7 @@ body {
  margin-top: 10px;
  padding: 10px;
  font-size: 16px;
- 
+
 }
 
 .vote{
@@ -312,4 +312,10 @@ div.registerPage{
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   box-shadow: 0 5px 25px rgba(70, 226, 31, 0.4);
+}
+
+.error{
+  color: crimson;
+  text-align: center;
+
 }
