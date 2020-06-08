@@ -1,0 +1,26 @@
+<main>
+  <form id = "delAdmin" action = "/admin/delete" method = "post">
+  <input name="UID" visibility: hidden id="ad_page_UID" type="number" value=-2>
+
+  <div class="error">
+		{{messages.error}}
+	</div>
+  
+  <div class="f_column">
+  <div class="row">
+      <div class="column">
+          <div class="card">Admin List</div>
+      </div>
+          {{#each admin}}
+          <div class="column">
+              <div class = "card">
+              Screen Name: {{screen_name}} &nbsp; &nbsp; &nbsp; Email: {{email}}
+              <button name = "del" value = {{admin_id}} class="vote"> Delete </button>
+            </div>
+          </div>
+          {{/each}}
+  </div>
+  </div>
+</form>
+
+</main>

@@ -11,7 +11,7 @@ var session = require('express-session');
 var fs = require('fs');
 
 var app = express();
-var port = process.env.PORT || 42077;
+var port = process.env.PORT || 3002;
 
 //setup handlebars
 app.engine('handlebars', expressHB({ defaultLayout: 'main' }));
@@ -32,6 +32,7 @@ app.use('/battle/create', require('./startBattle.js'));
 app.use('/', require('./critterBattle.js'));
 app.use('/login', require('./login_handlr.js'));
 app.use('/account/view/', require('./user_account'));
+app.use('/admin', require('./admin.js'));
 
 
 //setup the Date object for timeouts
@@ -48,7 +49,11 @@ var date = new Date();
   });
   app.get("/account/load", function (req, res) {
 	      res.status(200).render('load_account');
-	        });
+	 });
+
+  app.get("/admin/load", function (req, res) {
+       res.status(200).render('admin_load');
+  });
 
 /*  app.get("/login", function (req, res) {
     res.status(200).render('login');
