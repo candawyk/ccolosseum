@@ -87,12 +87,6 @@ module.exports = function(){
       });
     }
 
-    /*function checkAct(res, mysql, context, id, complete){
-      if (req.body.UID == '' || req.body.UID == -1){
-        complete();
-      }
-    }
-*/
     router.get('/:id', function(req,res){
       callbackCount= 0;
       var context = {};
@@ -108,20 +102,56 @@ module.exports = function(){
       }
     });
 
+    router.delete('/:comment_id', function (req, res) {
+      var mysql = req.app.get('mysql');
+      var sql = "DELETE FROM Comments WHERE comment_id = ?";
+      var inserts = [req.params.comment_id];
+      sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+        if (error) {
+          res.write(JSON.stringify(error));
+          res.status(400);
+          res.end();
 
-    router.get('/', function(req,res){
+        } else {
+          res.status(202).end();
+          console.log("success");
+        }
+      })
+    });
+
+
+
+    router.get('/', function (req, res) {
       callbackCount = 0;
       var context = {};
       var mysql = req.app.get('mysql');
+      context.jsscripts = ["deletecomment.js"];
       getComments(res, mysql, context, complete);
       getCrit(res, mysql, context, complete);
       getImage(res, mysql, context, complete);
-      function complete(){
+      function complete() {
         callbackCount++;
-        if(callbackCount == 3){
-          res.render('battle_display',context);
+        if (callbackCount == 3) {
+          res.render('battle_display', context);
         }
       }
+    });
+
+    router.post('/', function (req, res) {
+      var mysql = req.app.get('mysql');
+      console.log(req.body.comment_text);
+      var sql = "INSERT INTO Comments (comment_text, likes, dislikes) VALUES (?, ?, 0 ,0)";
+      var inserts = [req.body.comment_text, req.body.likes, req.body.dislikes];
+      sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+        if (error) {
+          res.write(JSON.stringify(error));
+          console.log("error");
+          res.end();
+          console.log("error");
+        } else {
+          res.redirect('/battle/display/');
+        }
+      })
     });
 
     router.post('/vote',function(req,res){

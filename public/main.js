@@ -115,6 +115,36 @@ window.addEventListener('DOMContentLoaded', function () {
     logoutBtn.addEventListener('click', logout);
   }
 
+
+
+  var goToAdmin = document.getElementById('goToAdmin');
+  if(goToAdmin){
+    function reDir(callback){
+      refreshIDs();
+      callback();
+  }
+  reDir(function(){
+		  if(userID == -1){
+        goToAdmin.addEventListener('click',function(){changePage("/login");});
+	  }
+	  else{
+		  var reqURL = "/admin/load/";
+		  goToAdmin.addEventListener('click',function(){changePage(reqURL);});
+	  }
+	});
+  }
+
+
+  var rel = document.getElementById('acntPops');
+  if (rel){
+    document.getElementById('admin_UID').value = userID;
+    rel.submit();
+  }
+
+
+
+
+
   var goToAcnt = document.getElementById('goToAcnt');
   if(goToAcnt){
 	  function reDir(callback){
@@ -181,7 +211,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
   }
 
-
+  var admins_id = document.getElementById('ad_page_UID');
+  if(admins_id){
+    document.getElementById('ad_page_UID').value = userID;
+  }
 
 
 });
