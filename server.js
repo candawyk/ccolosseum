@@ -11,7 +11,7 @@ var session = require('express-session');
 var fs = require('fs');
 
 var app = express();
-var port = process.env.PORT || 42077;
+var port = process.env.PORT || 3002;
 
 //setup handlebars
 app.engine('handlebars', expressHB({ defaultLayout: 'main' }));
