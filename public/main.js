@@ -12,6 +12,9 @@ var userID = -1;
 function refreshIDs(){
   userID = window.sessionStorage.getItem("userID");
   console.log("REFRESHED ID " + userID);
+  if (userID == null){
+	  	userID = -1;
+  }
 }
 
 function clearTheCookies(){

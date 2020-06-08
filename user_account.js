@@ -18,7 +18,7 @@ module.exports = function(){
 			  context.sc =  results[0].sc;
 			  context.bio = results[0].bio;
 			  sql = mysql.pool.query(ava_q, creds, function(error, results, fields){
-				  context.LNK = results[0].LNK;
+				  context.path = results[0].LNK;
 				  login(res, context);
 			});
 		  }
