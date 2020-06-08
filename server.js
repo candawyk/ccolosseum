@@ -25,6 +25,10 @@ app.use(session({
 
 app.use(flash());
 
+
+app.use(express.static('public'));
+
+
 app.set('mysql', mysql);
 app.use(bodyParse.urlencoded({extended:true}));
 app.use('/battle/display', require('./viewBattles.js'));
@@ -77,7 +81,7 @@ var date = new Date();
 
 
 app.use(express.static('public'));
-
+app.use('/static', express.static('public'));
 
 app.get('*', function (req, res) {
   //console.log("==URL NOT FOUND: ", req.url);

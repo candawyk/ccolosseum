@@ -16,6 +16,21 @@ module.exports = function(){
       });
     }
 
+
+    function getBatt(res,mysql,context,complete){
+      var query ="SELECT B.battle_id"
+      mysql.pool.query(query,function(error,results,fields){
+        if (error) {
+          res.write(JSON.stringify(error))
+          res.end();
+        }
+        context.battl = results;
+        //console.log(context)
+        complete();
+      });
+    }
+
+
     function getCrit(res,mysql,context, complete){
       var query = "SELECT B.battle_id, B.Quantity_one, B.Quantity_two, B.Size_one, B.Size_two, B.votes_one, B.votes_two, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_one) AS Name1, (SELECT species FROM Critter C WHERE  C.critter_id = T.critter_two) AS Name2 FROM Takes_part_in T, Battle B WHERE T.battle = (SELECT D.battle_id FROM Battle D ORDER BY D.battle_id DESC LIMIT 1) ORDER BY B.battle_id DESC LIMIT 1"
       mysql.pool.query(query, function(error, results, fields){
@@ -97,6 +112,7 @@ module.exports = function(){
       callbackCount= 0;
       var context = {};
       var mysql = req.app.get('mysql');
+      context.jsscripts = ["deleteComment.js"];
       getCritter(res, mysql, context, req.params.id, complete);
       getCom(res, mysql, context, req.params.id, complete);
       getImg(res, mysql, context, req.params.id, complete);
@@ -108,10 +124,16 @@ module.exports = function(){
       }
     });
 
+
+    //The deleteComment.js ajax call works properly
+    //It is getting the correct comment_id passed into it, it console logs the comment_id that's meant to be deleted
+    //but this does not delete from the database yet for some reason
+
     router.delete('/:comment_id', function (req, res) {
       var mysql = req.app.get('mysql');
       var sql = "DELETE FROM Comments WHERE comment_id = ?";
       var inserts = [req.params.comment_id];
+      console.log("deleting comment : ", inserts);
       sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
         if (error) {
           res.write(JSON.stringify(error));
@@ -131,10 +153,11 @@ module.exports = function(){
       callbackCount = 0;
       var context = {};
       var mysql = req.app.get('mysql');
-      context.jsscripts = ["deletecomment.js"];
+      context.jsscripts = ["deleteComment.js"];
       getComments(res, mysql, context, complete);
       getCrit(res, mysql, context, complete);
       getImage(res, mysql, context, complete);
+      getBatt(res,mysql,context,complete);
       function complete() {
         callbackCount++;
         if (callbackCount == 3) {
@@ -142,12 +165,30 @@ module.exports = function(){
         }
       }
     });
-
-    router.post('/', function (req, res) {
+ 
+    router.post('/', function(req,res){
       var mysql = req.app.get('mysql');
       console.log(req.body.comment_text);
-      var sql = "INSERT INTO Comments (comment_text, likes, dislikes) VALUES (?, ?, 0 ,0)";
-      var inserts = [req.body.comment_text, req.body.likes, req.body.dislikes];
+      var sql = "INSERT INTO Comments (comment_id, comment_text, likes, dislikes) VALUES (?, ?, ?, ?)";
+      var inserts = [req.body.comment_id, req.body.comment_text, 0, 0];
+      sql = mysql.pool.query(sql,inserts,function(error,results,fields){
+        if(error){
+          res.write(JSON.stringify(error));
+          console.log("error");
+          res.redirect('/battle/display/');
+          console.log("error");
+        }else{
+          res.redirect('/battle/display/');
+        }
+      })
+    });
+
+
+    router.put('/:comment_id', function (req, res) {
+      var mysql = req.app.get('mysql');
+      console.log(req.body.comment_text);
+      var sql = "UPDATE Comments set comment_id=comment_id, comment_text=comment_id, likes=likes+1, dislikes=dislikes";
+      var inserts = [req.params.comment_id, req.body.comment_text, req.body.likes, req.body.dislikes];
       sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
         if (error) {
           res.write(JSON.stringify(error));
@@ -159,6 +200,7 @@ module.exports = function(){
         }
       })
     });
+
 
     router.post('/vote',function(req,res){
       //var creds = [req.body.UID];
