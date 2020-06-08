@@ -140,8 +140,8 @@ module.exports = function(){
     router.post('/', function (req, res) {
       var mysql = req.app.get('mysql');
       console.log(req.body.comment_text);
-      var sql = "INSERT INTO Comments (comment_text, likes, dislikes) VALUES (?, ?, 0 ,0)";
-      var inserts = [req.body.comment_text, req.body.likes, req.body.dislikes];
+      var sql = "INSERT INTO Comments (comment_id, comment_text, likes, dislikes) VALUES (?, ?, 0, 0)";
+      var inserts = [req.body.comment_id, req.body.comment_text, 0, 0];
       sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
         if (error) {
           res.write(JSON.stringify(error));
