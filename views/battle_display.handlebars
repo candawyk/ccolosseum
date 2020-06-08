@@ -3,8 +3,6 @@
 	<div class="f_row">
 		<div class="f_column">
 
-			<form id="upOne" action = '/battle/display/vote' method="post">
-			<input name="UID" visibility: hidden id="battle_display_usr" type="number" value=-2>
 			<div class="row">
 				<div class="column">
 					{{#each link}}
@@ -12,19 +10,14 @@
 					<image src="../cat.jpeg" class="ava_pic"> }}
 						<div class="card">
 
-							{{#each critter}}
-							<input name="BID" visibility: hidden id="battle_id" type="number" value={{battle_id}}>
-							Critter one name : {{Name1}} <br>
-							Critter one size : {{Size_one}} <br>
-							Critter one quantity : {{Quantity_one}} <br>
-							Votes for critter one : {{votes_one}}
-							{{/each}} {{! Critter one name : $Critter_one <br> Critter one size : $Critter_one_size
+							{{#each critter}} Critter one name : {{Name1}} <br> Critter one size : {{Size_one}} <br> Critter one quantity : {{Quantity_one}}
+							<br> Votes for critter one : {{votes_one}} {{/each}} {{! Critter one name : $Critter_one <br> Critter one size : $Critter_one_size
 							<br> Critter one quantity : $Critter_one_quanitity <br> Votes for critter one : $Critter_one_votes }}
 						</div>
 				</div>
 				<div class="column">
 					<div class="card">
-						<button name = "vouch" value = "0" class="vote"> Vote!</button>
+						<button class="vote"> Vote!</button>
 					</div>
 				</div>
 			</div>
@@ -44,31 +37,26 @@
 				</div>
 				<div class="column">
 					<div class="card">
-						<button name = "vouch" value = "1" class="vote">Vote!</button>
+						<button class="vote">Vote!</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</div>
-</form>
-
-	<div class="error">
-		{{messages.error}}
-	</div>
-
 
 	<div class="row">
 		<div class="column">
-			{{!
-			<div class="card">Comment Section</div>
-			<form id="postComment" action="/battle/display/addcomment" method="post">
-				comment_id : <input type="text" comment_id="comment_id"><br> comment_text : <input type="text" comment_text="comment_text"><br>				likes : <input type="text" likes="likes"><br> dislikes : <input type="text" likes="dislikes"><br> }}
-				<div class="card">Comment Section</div>
-			</form>
-			<textarea name="Leave a comment!" method="post" action='/battle/display/add'></textarea>
-			<button class="vote" method="post" action='/battle/display/add'>Post!</button>
 
+			<div class="card">Comment Section</div>
+			</form>
+			<form name="Leave a comment!" method="post" action='/battle/display'>
+				<br> Comment : <input type="text" name="comment_text"><br> Likes :
+				<input type="text" name="likes"><br> Dislikes : <input type="text" name="dislikes"><br>
+
+
+				<input type="submit" value="Submit">
+			</form>
 			<div class="card">
 				<form>
 					{{#each comment}}
@@ -79,6 +67,7 @@
 						<button class="vote" method="post" onclick='/battle/display/add'>Post!</button>
 						<button class="like">Likes : {{likes}}</button>
 						<button class="dislike">Dislikes : {{dislikes}}</button>
+						<button onclick="deleteComment({{comment_id}})">Delete</button>
 
 					</div>
 					{{/each}}

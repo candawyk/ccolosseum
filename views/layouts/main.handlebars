@@ -14,7 +14,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.runtime.js" defer></script>
 
     <script src="/main.js" charset="utf-8" defer></script>
-
+    <script src="/deleteComment.js" charset="utf-8" defer></script>
+    {{#each jsscripts}}
+    <script src="/static/{{this}}"></script>
+    {{/each}}
+    
   </head>
   <body ID= "pageBackground">
 
