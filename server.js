@@ -35,6 +35,8 @@ app.use('/account/view/', require('./user_account'));
 app.use("/registration", require("./register.js"));
 app.use('/admin', require('./admin.js'));
 app.use('/account/edit', require('./bio_update.js'));
+app.use('/account/visit', require('./visit_user.js'));
+app.use('/search', require('./search.js'));
 
 //setup the Date object for timeouts
 var date = new Date();

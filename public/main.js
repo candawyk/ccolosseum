@@ -35,6 +35,7 @@ function refreshIDs(){
   userID = window.sessionStorage.getItem("userID");
   console.log("REFRESHED ID " + userID);
   if (userID == null){
+		console.log("Setting ID to -1");
 	  	userID = -1;
   }
 }
@@ -102,6 +103,13 @@ function getName(){
       }
 }
 
+function search_db(){
+	var text_input_box = document.getElementById('bsearch');
+	var reqURL = "/search/" + text_input_box.value;
+	changePage(reqURL);
+}
+
+
 //===============
 //Event Listners
 //===============
@@ -110,6 +118,11 @@ function getName(){
  * Wait until the DOM content is loaded, and then hook up UI interactions, etc.
  */
 window.addEventListener('DOMContentLoaded', function () {
+
+  var search = document.getElementById('searchButt');
+  if(search){
+	  search.addEventListener('click', search_db);
+  }
 
   var popup = document.getElementById('edit');
   if(popup){
