@@ -131,7 +131,7 @@ module.exports = function(){
 
     router.delete('/:comment_id', function (req, res) {
       var mysql = req.app.get('mysql');
-      var sql = "DELETE FROM Comments WHERE comment_id = ?";
+      var sql = "DELETE FROM Comment_of WHERE comment_id = ?";
       var inserts = [req.params.comment_id];
       console.log("deleting comment : ", inserts);
       sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
