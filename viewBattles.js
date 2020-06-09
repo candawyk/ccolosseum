@@ -189,6 +189,7 @@ module.exports = function(){
       console.log(req.body.comment_text);
       var sql = "UPDATE Comments set comment_id=comment_id, comment_text=comment_id, likes=likes+1, dislikes=dislikes";
       var inserts = [req.params.comment_id, req.body.comment_text, req.body.likes, req.body.dislikes];
+      console.log("liked comment : ", req.body.comment_id);
       sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
         if (error) {
           res.write(JSON.stringify(error));
