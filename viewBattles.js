@@ -125,7 +125,7 @@ module.exports = function(){
       callbackCount = 0;
       var context = {};
       var mysql = req.app.get('mysql');
-      context.jsscripts = ["deletecomment.js"];
+      context.jsscripts = ["deleteComment.js"];
       getComments(res, mysql, context, complete);
       getCrit(res, mysql, context, complete);
       getImage(res, mysql, context, complete);
