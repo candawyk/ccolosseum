@@ -1,7 +1,7 @@
-function deleteComment(comment_id){
+function likeComment(comment_id){
         $.ajax({
             url:'/battle/display/' + comment_id,
-            type: 'DELETE',
+            type: 'PUT',
             success: function(result){
                 window.location.reload(true);
             }
