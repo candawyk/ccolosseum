@@ -91,6 +91,7 @@ module.exports = function(){
       callbackCount= 0;
       var context = {};
       var mysql = req.app.get('mysql');
+      context.jsscripts = ["deleteComment.js"]
       getCritter(res, mysql, context, req.params.id, complete);
       getCom(res, mysql, context, req.params.id, complete);
       getImg(res, mysql, context, req.params.id, complete);
@@ -104,7 +105,7 @@ module.exports = function(){
 
     router.delete('/:comment_id', function (req, res) {
       var mysql = req.app.get('mysql');
-      var sql = "DELETE FROM Comments WHERE comment_id = ?";
+      var sql = "DELETE FROM Comment_of WHERE comment_id = ?";
       var inserts = [req.params.comment_id];
       sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
         if (error) {
@@ -137,27 +138,6 @@ module.exports = function(){
       }
     });
 
-     //The deleteComment.js ajax call works properly
-    //It is getting the correct comment_id passed into it, it console logs the comment_id that's meant to be deleted
-    //but this does not delete from the database yet for some reason
-
-    router.delete('/:comment_id', function (req, res) {
-      var mysql = req.app.get('mysql');
-      var sql = "DELETE FROM Comments WHERE comment_id = ?";
-      var inserts = [req.params.comment_id];
-      console.log("deleting comment : ", inserts);
-      sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
-        if (error) {
-          res.write(JSON.stringify(error));
-          res.status(400);
-          res.end();
-
-        } else {
-          res.status(202).end();
-          console.log("success");
-        }
-      })
-    });
 
     router.post('/', function (req, res) {
       var mysql = req.app.get('mysql');
