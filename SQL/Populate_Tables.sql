@@ -49,25 +49,25 @@ INSERT INTO Avatar (image_location, description ) VALUES
 
 INSERT INTO User_has_a (usr, av_id) VALUES
 ((SELECT User_id FROM Usr WHERE screen_name="James"),
-(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg")),
+(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="Wilbur"),
-(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg")),
+(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="Chap"),
-(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg")),
+(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="Man"),
-(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg")),
+(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="winghenge"),
-(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg")),
+(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="Fred"),
-(SELECT av_id FROM Avatar WHERE image_location="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wired.com%2Fwp-content%2Fuploads%2F2015%2F04%2F85120553.jpg&f=1&nofb=1")),
+(SELECT av_id FROM Avatar WHERE image_location="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wired.com%2Fwp-content%2Fuploads%2F2015%2F04%2F85120553.jpg&f=1&nofb=1" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="Mcdonald"),
-(SELECT av_id FROM Avatar WHERE image_location="https://wallpapercave.com/wp/hbEVhfX.jpg")),
+(SELECT av_id FROM Avatar WHERE image_location="https://wallpapercave.com/wp/hbEVhfX.jpg" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="King"),
-(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg")),
+(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="Hamantha"),
-(SELECT av_id FROM Avatar WHERE image_location="http://2.bp.blogspot.com/_eIwMvvvkFQk/TTFbMEUfo0I/AAAAAAAAADw/ADqNO-VDiO0/s1600/cute+animals+%25280%2529.jpg")),
+(SELECT av_id FROM Avatar WHERE image_location="http://2.bp.blogspot.com/_eIwMvvvkFQk/TTFbMEUfo0I/AAAAAAAAADw/ADqNO-VDiO0/s1600/cute+animals+%25280%2529.jpg" LIMIT 1)),
 ((SELECT User_id FROM Usr WHERE screen_name="Shaggy"),
-(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg"));
+(SELECT av_id FROM Avatar WHERE image_location="http://i.huffpost.com/gen/781204/thumbs/o-CUTE-ANIMALS-PHOTOS-facebook.jpg" LIMIT 1));
 
 INSERT INTO Critter_has_a (critter, av_id) VALUES
 ((SELECT critter_id FROM Critter WHERE species="Cow"),

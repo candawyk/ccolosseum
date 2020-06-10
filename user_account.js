@@ -4,7 +4,7 @@ module.exports = function(){
 
     function getAcountBody( res, mysql, req, res, login){
           var query = "SELECT screen_name as sc, bio  FROM Usr WHERE User_id=?";
-	  var ava_q = "SELECT Avatar.image_location as LNK FROM Avatar JOIN User_has_a ON User_has_a.av_id=Avatar.av_id WHERE User_has_a.usr=?";
+	  var ava_q = "SELECT Avatar.image_location as LNK FROM Avatar JOIN User_has_a ON User_has_a.av_id=Avatar.av_id WHERE User_has_a.usr=? LIMIT 1";
 	  var creds = [req.body.UID];
 	  console.log([req.body.sn, req.body.pass]);
           sql = mysql.pool.query(query, creds, function(error, results, fields){
