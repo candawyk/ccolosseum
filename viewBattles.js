@@ -140,27 +140,33 @@ module.exports = function(){
 
 
     router.post('/', function (req, res) {
+      callbackCount = 0;
+      var context = {};
       var mysql = req.app.get('mysql');
-      console.log(req.body.comment_text);
-      var sql = "INSERT INTO Comments (comment_id, comment_text, likes, dislikes) VALUES (?, ?, 0, 0)";
-      var inserts = [req.body.comment_id, req.body.comment_text, 0, 0];
+    //  console.log(req.body.comment_text);
+    //  console.log(req.body.BID);
+      var sql = "INSERT INTO Comments (comment_text, likes, dislikes) VALUES (?, 0, 0)";
+      var nsql = "INSERT INTO Comment_of (comment_id, battle) VALUES (?,?)";
+      var inserts = [ req.body.comment_text, 0, 0];
       sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
         if (error) {
           res.write(JSON.stringify(error));
           console.log("error");
           res.end();
-          console.log("error");
-        } else {
-          res.redirect('/battle/display/');
         }
+        var contain = results.insertId;
+        var into = [contain, req.body.BID];
+        sql = mysql.pool.query(nsql, into, function(error, results, fields){
+          if (error){
+            res.write(JSON.stringify(error));
+            res.end();
+          }
+        });
       })
+      res.redirect('/battle/display/' + req.body.BID);
     });
 
     router.post('/vote',function(req,res){
-      //var creds = [req.body.UID];
-      //console.log(creds)
-      //console.log([req.body.vouch])
-      //console.log([req.body.BID])
       callbackCount = 0;
       var context = {};
       var mysql = req.app.get('mysql');
@@ -210,6 +216,34 @@ module.exports = function(){
           }
         });
       }
+    });
+
+    router.post('/likes',function(req,res){
+      callbackCount = 0;
+      var context = {};
+      var mysql = req.app.get('mysql');
+      var lsql = "UPDATE Comments SET likes = likes + 1 WHERE comment_id = ?";
+      var dsql = "UPDATE Comments SET dislikes = dislikes + 1 WHERE comment_id = ?";
+      var rando = [req.body.CID];
+      if (req.body.couch == 0){
+        mysql.pool.query(lsql, rando, function(error, results, fields){
+          if(error){
+            res.write(JSON.stringify(error))
+            res.end();
+          }
+        });
+      }
+      else if(req.body.couch == 1){
+        mysql.pool.query(dsql, rando, function(error, results, fields){
+          if(error){
+            res.write(JSON.stringify(error))
+            res.end();
+          }
+        });
+
+      }
+      res.redirect('back');
+
     });
 
     return router;
