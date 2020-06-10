@@ -60,10 +60,10 @@
 			<div class="card">Comment Section</div>
 			</form>
 			<form name="Leave a comment!" method="post" action='/battle/display'>
-				<br> Comment : <input type="text" name="comment_text"><br>
-
-
-				<input type="submit" value="Submit">
+			 
+			<br> Comment : <input type="text" name="comment_text" id="comment_id" value={{comment_id}}><br>
+			Select the battle ID : <input type="number" name="BID" id="battle_id" value={{battle_id}}>
+				<input type="submit" name="comment_id" id="{{comment_id}}" value="{{comment_id}}">
 			</form>
 			<div class="card">
 				<form>

@@ -151,6 +151,21 @@ module.exports = function(){
           res.end();
           console.log("error");
         } else {
+          var mysql = req.app.get('mysql');
+          console.log("printing comment_id : ", req.body.comment_id);
+          console.log("printing battle_id : ", req.body.BID);
+          var sql = "INSERT INTO Comment_of (id, comment_id, battle) VALUES (?, ?, ?)";
+          var inserts = [req.body.id, req.body.comment_id, req.body.BID];
+          sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+            if (error) {
+              res.write(JSON.stringify(error));
+              console.log("error");
+              res.end();
+              console.log("error");
+            } else {
+              res.redirect('/battle/display/');
+            }
+          })
           res.redirect('/battle/display/');
         }
       })
