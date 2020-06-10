@@ -141,20 +141,6 @@ INSERT INTO Takes_part_in (critter_one, critter_two, battle) VALUES
 (SELECT critter_id FROM Critter WHERE species="Duck"),
 (SELECT LAST_INSERT_ID()));
 
---Users can favorite battles
-
-INSERT INTO Favorites (battle, usr) VALUES
-((SELECT battle_id FROM Battle WHERE Size_One="book" AND Size_two="pencil" AND made_by="Hamantha"),(SELECT User_id FROM Usr WHERE screen_name="winghenge"));
-
-INSERT INTO Favorites (battle, usr) VALUES
-((SELECT battle_id FROM Battle WHERE Size_One="book" AND Size_two="pencil" AND made_by="Hamantha"),(SELECT User_id FROM Usr WHERE screen_name="Fred"));
-
-INSERT INTO Favorites (battle, usr) VALUES
-((SELECT battle_id FROM Battle WHERE Size_One="book" AND Size_two="pencil" AND made_by="Hamantha"),(SELECT User_id FROM Usr WHERE screen_name="Hamantha"));
-
-INSERT INTO Favorites (battle, usr) VALUES
-((SELECT battle_id FROM Battle WHERE Size_One="oven" AND Size_two="cup" AND made_by="winghenge"),(SELECT User_id FROM Usr WHERE screen_name="winghenge"));
-
 --Users can vote on battles
 INSERT INTO Votes_for (liked, battle, usr) VALUES
 (True, (SELECT battle_id FROM Battle WHERE Size_One="book" AND Size_two="pencil" AND made_by="Hamantha"),(SELECT User_id FROM Usr WHERE screen_name="winghenge"));
@@ -172,47 +158,21 @@ INSERT INTO Votes_for (liked, battle, usr) VALUES
 INSERT INTO Comments (comment_text, likes, dislikes) VALUES
 ("Hello!", 0, 0);
 
-INSERT INTO Makes_a (comment, usr) VALUES
-((SELECT LAST_INSERT_ID()), (SELECT User_id FROM Usr WHERE screen_name="winghenge"));
 
 INSERT INTO Comments (comment_text, likes, dislikes) VALUES
 ("SHello!", 0, 0);
 
-INSERT INTO Makes_a (comment, usr) VALUES
-((SELECT LAST_INSERT_ID()), (SELECT User_id FROM Usr WHERE screen_name="winghenge"));
 
 INSERT INTO Comments (comment_text, likes, dislikes) VALUES
 ("PotatoesAreCritterrsToo", 0, 0);
 
-INSERT INTO Makes_a (comment, usr) VALUES
-((SELECT LAST_INSERT_ID()), (SELECT User_id FROM Usr WHERE screen_name="Fred"));
 
 INSERT INTO Comments (comment_text, likes, dislikes) VALUES
 ("THisIsCool", 0, 0);
 
-INSERT INTO Makes_a (comment, usr) VALUES
-((SELECT LAST_INSERT_ID()), (SELECT User_id FROM Usr WHERE screen_name="Hamantha"));
 
 INSERT INTO Comments (comment_text, likes, dislikes) VALUES
 ("WordsWordsWords", 0, 0);
 
-INSERT INTO Makes_a (comment, usr) VALUES
-((SELECT LAST_INSERT_ID()), (SELECT User_id FROM Usr WHERE screen_name="Man"));
 
 
---Users can like comments
-INSERT INTO Likes (liked, comment, usr) VALUES
-(True, (SELECT comment_id FROM Comments WHERE comment_text="Hello!"),
-(SELECT User_id FROM Usr WHERE screen_name="Man"));
-
-INSERT INTO Likes (liked, comment, usr) VALUES
-(False, (SELECT comment_id FROM Comments WHERE comment_text="Hello!"),
-(SELECT User_id FROM Usr WHERE screen_name="Hamantha"));
-
-INSERT INTO Likes (liked, comment, usr) VALUES
-(True, (SELECT comment_id FROM Comments WHERE comment_text="THisIsCool"),
-(SELECT User_id FROM Usr WHERE screen_name="winghenge"));
-
-INSERT INTO Likes (liked, comment, usr) VALUES
-(True, (SELECT comment_id FROM Comments WHERE comment_text="Hello!"),
-(SELECT User_id FROM Usr WHERE screen_name="winghenge"));
