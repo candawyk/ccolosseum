@@ -14,12 +14,13 @@ module.exports = function(){
       var sql = "INSERT INTO Battle (Quantity_one, Quantity_two, Size_one, Size_two) VALUES(?,?,?,?)";
       var nsql = "INSERT INTO Critter (Species) VALUES(?)";
       var tpi = "INSERT INTO Takes_part_in (critter_one, critter_two, battle) VALUES(?,?,?)";
-
+      var commOf = "INSERT INTO Comment_of (id, comment_id, battle) VALUES (?,?,?)";
+      var commSQL = "INSERT INTO Comments (comment_id, comment_text, likes, dislikes) VALUES (?, ?, 0, 0)";
       var cha = "INSERT INTO Critter_has_a (critter, av_id) VALUES (?,?)";
       var ava = "INSERT INTO Avatar (image_location) VALUES(?)";
 
       var usr_crt = "INSERT INTO Creates_a (battle, usr) VALUES (?,?)";
-
+      var commserts = [req.body.comment_id, req.body.comment_text, 0, 0];
       var inserts = [req.body.num1, req.body.num2, req.body.size1, req.body.size2];
       var ninserts = [req.body.crit1];
       var minserts = [req.body.crit2];
@@ -29,6 +30,9 @@ module.exports = function(){
       var COID;
       var CTID;
       var AID;
+      var get_CID = [req.body.comment_id];
+      var comment_id;
+      var usr_comm;
 
       if (req.body.num1 == '' || req.body.size1 == '' || req.body.crit1 == '' || req.body.link1 == ''){
         req.flash('error', 'Please fill in all of the fields');
@@ -45,6 +49,22 @@ module.exports = function(){
       }
 
       else{
+
+        sql = mysql.pool.query(commSQL, commserts, function (error, results, fields) {
+          if (error) {
+            res.write(JSON.stringify(error));
+            res.end();
+          }
+          comment_id = results.insertId;
+
+          var usr_comm = [req.body.comment_id, req.body.comment_id, req.body.battle];
+          sql = mysql.pool.query(commOf, usr_comm, function (error, results, fields) {
+            if (error) {
+              res.write(JSON.stringify(error));
+              res.end();
+            }
+          });
+
       sql = mysql.pool.query(sql,inserts,function(error,results,fields){
           if (error){
             res.write(JSON.stringify(error));
@@ -127,7 +147,7 @@ module.exports = function(){
         res.redirect('/battle/display');
 
       }
-
+    )}
     });
 
     return router;
