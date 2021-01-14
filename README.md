@@ -3,6 +3,7 @@
 2. Has admin capabilities where the admin can delete users.
 3. Each user can only vote for a battle once.
 4. A user can make a comment on a battle and upvote other comments.
+5. Uses a SQL database to store user information and animal information.
 
 ## Display of the Home page
 ![](pic5.PNG)
