@@ -3,6 +3,8 @@
 	<form id="acntPop" action = '/account/view' method="post">
 
 	<input name="UID" visibility: hidden id="acnt_page" type="number" value=-2>
+	</form>
+	
 	<div class="row">
 		<div class="column">
 			<div class="account card">
@@ -12,16 +14,42 @@
 	<div class="ava_box">
 		<img src={{path}} class="ava_pic">
 	</div>
-
-	<textarea> {{bio}} </textarea>
-
+	 
+	 <div class="txt_box"> {{bio}} </div>
+	
 	<br>
 
-	<button class="edit">Edit Profile</button>
+	
+	 <div class="editbtn"  id="edit">Edit Profile</div>
 
+<form id="chngbio" action="/account/edit" method="post">
+<div id="playerNameInput" class="hidden">
+  <div class="modal-dialog">
+
+        <div class="modal-header">
+      <h3>Edit Bio</h3>
+      <!-- <button type="button" class="modal-close-button">&times;</button> -->
+    </div>
+
+    <div class="modal-body">
+      <div class="input-element">
+        <input name="UIDBIO" visibility: hidden id="acnt_page_bio" type="number" value=-2>
+
+	<textarea name="edited_bio" id="edited_bio" maxlength="255" ></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="editbtn" type="button" id="modal-cancel-button">Cancel</button>
+      <input id="modal-accept-button" class="editbtn" type="submit" value="Update!">
+    </div>
+  </div>
+</div>
+</form
+	
 
 	</div>
 	</div>
 	</div>
-	</form>
+
 </main>

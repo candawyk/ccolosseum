@@ -73,8 +73,20 @@ background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba
 }
 
 .ava_box{
-  margin: 10px 10px 10px 10px;
+margin: 10px 10px 10px 10px;
 }
+
+.txt_box{
+	width:440px;
+	height:220px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 50%;
+	margin-right: 50%;
+	transform: translate(-50%, 0%);
+	border-style: solid; 
+}
+
 .ava_pic{
 width:120px;
 height:120px;
@@ -105,6 +117,15 @@ a:focus {
  display: inline-block;
 }
 
+.editbtn:hover{
+	color: rgba(222,181,92,1);
+	   text-shadow:0px 0px 30px #fdec6e;
+	     -moz-transition: all 0.2s ease-in;
+	       -o-transition: all 0.2s ease-in;
+	         -webkit-transition: all 0.2s ease-in;
+		   transition: all 0.2s ease-in;
+		     font-weight:1000;
+}
 
 div.f_row{
   background-color:#2299c3
@@ -318,4 +339,112 @@ div.registerPage{
   color: crimson;
   text-align: center;
 
+}
+
+//////////////////
+/* Modals */
+/////////////////
+
+#playerNameInput {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000;
+  overflow: scroll;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-dialog {
+  width: auto;
+  max-width: 600px;
+  min-width: 350px;
+  min-height: 300px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.modal-header {
+  position: relative;
+  padding: 10px 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.modal-close-button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.input-element {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.input-element label {
+  font-weight: 600;
+  flex: 1 75px;
+  margin-right: 10px;
+}
+
+.input-element input,
+.input-element textarea {
+  flex: 6 200px;
+  padding: 8px;
+  font-size: 20px;
+  border: 1px solid #aaa;
+}
+
+.input-element textarea {
+  min-height: 64px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px 20px 10px;
+}
+
+.modal-footer button {
+  font-size: 20px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.modal-footer .modal-cancel-button:hover {
+  background-color: #eee;
+}
+
+.modal-footer .modal-accept-button {
+  background-color: #319df6;
+  color: #fff;
+}
+
+.modal-footer .modal-accept-button:hover {
+  background-color: #087dde;
 }

@@ -102,12 +102,6 @@ module.exports = function(){
       });
     }
 
-    /*function checkAct(res, mysql, context, id, complete){
-      if (req.body.UID == '' || req.body.UID == -1){
-        complete();
-      }
-    }
-*/
     router.get('/:id', function(req,res){
       callbackCount= 0;
       var context = {};

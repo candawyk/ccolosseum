@@ -8,10 +8,35 @@ var userID = -1;
 //===============
 
 
+function showModal(){
+  console.log("++");
+  var Modal = document.getElementById('playerNameInput');
+
+  // Show the modal and its backdrop.
+  Modal.classList.remove("hidden");
+}
+
+function hideModal(){
+  console.log("--");
+  var Modal = document.getElementById('playerNameInput');
+
+  // Show the modal and its backdrop.
+  Modal.classList.add("hidden");
+
+  var inputElems = document.getElementsByClassName('input-element');
+  for (var i = 0; i < inputElems.length; i++) {
+    var input = inputElems[i].querySelector('input, textarea');
+    input.value = '';
+  }
+}
+
 
 function refreshIDs(){
   userID = window.sessionStorage.getItem("userID");
   console.log("REFRESHED ID " + userID);
+  if (userID == null){
+	  	userID = -1;
+  }
 }
 
 function clearTheCookies(){
@@ -20,16 +45,6 @@ function clearTheCookies(){
   window.sessionStorage.setItem("userID", userID);
 }
 
-function getContentFromURL(index) {
-  var path = window.location.pathname;
-  var pathParts = path.split('/');
-  // console.log("== pathParts:", pathParts);
-  if (pathParts.length > index) {
-    return pathParts[index];
-  } else {
-    return null;
-  }
-}
 
 function getUserID_acnt(){
 
@@ -87,7 +102,6 @@ function getName(){
       }
 }
 
-
 //===============
 //Event Listners
 //===============
@@ -97,20 +111,50 @@ function getName(){
  */
 window.addEventListener('DOMContentLoaded', function () {
 
-  var potato = document.getElementById('exit-game');
-  if(potato){
-    potato.addEventListener('click', exitGame);
+  var popup = document.getElementById('edit');
+  if(popup){
+    popup.addEventListener('click', showModal);
   }
 
-  var acceptBtn = document.getElementById('modal-accept-button');
-  if(acceptBtn){
-    acceptBtn.addEventListener('click', getName);
+  var cancelBtn = document.getElementById('modal-cancel-button');
+  if(cancelBtn){
+ 	 cancelBtn.addEventListener('click', hideModal);
   }
 
   var logoutBtn = document.getElementById('lgbtn');
   if(logoutBtn){
     logoutBtn.addEventListener('click', logout);
   }
+
+
+
+  var goToAdmin = document.getElementById('goToAdmin');
+  if(goToAdmin){
+    function reDir(callback){
+      refreshIDs();
+      callback();
+  }
+  reDir(function(){
+		  if(userID == -1){
+        goToAdmin.addEventListener('click',function(){changePage("/login");});
+	  }
+	  else{
+		  var reqURL = "/admin/load/";
+		  goToAdmin.addEventListener('click',function(){changePage(reqURL);});
+	  }
+	});
+  }
+
+
+  var rel = document.getElementById('acntPops');
+  if (rel){
+    document.getElementById('admin_UID').value = userID;
+    rel.submit();
+  }
+
+
+
+
 
   var goToAcnt = document.getElementById('goToAcnt');
   if(goToAcnt){
@@ -164,6 +208,17 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  var acountPageR = document.getElementById('acnt_page_redir');
+  if(acountPageR){
+ 	changePage("/account/load");
+    }
+  
+
+  var acnt_bio = document.getElementById('acnt_page_bio');
+  if (acnt_bio){
+	  document.getElementById('acnt_page_bio').value = userID;
+  }
+
   var battle_display = document.getElementById('battle_display_usr');
   if(battle_display){
   //  alert("HI");
@@ -178,10 +233,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
   }
 
+  var admins_id = document.getElementById('ad_page_UID');
+  if(admins_id){
+    document.getElementById('ad_page_UID').value = userID;
+  }
+
+ });
 
 
-
-});
 
 window.onload = function () {
 	    refreshIDs();

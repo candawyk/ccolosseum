@@ -1,5 +1,5 @@
 <main>
-
+  <form id="regi" action="/registration" method="post">
   <div class="row">
     <div class="column">
       <div class="login card">
@@ -7,18 +7,20 @@
         <h2 class="form-signin-heading">Register</h2>
 
         <label for="inputUser" class="sr-only">Username</label>
-        <input name="username" type="text" id="inputUser" class="login-page" placeholder="Username" required="" autofocus="">
+        <input name="sc" type="text" id="inputUser" class="login-page" placeholder="Username" required="" autofocus="">
 
         <label for="inputPassword" class="sr-only">Password</label>
-        <input name="password" type="password" id="inputPassword" class="login-page" placeholder="Password" required="">
+        <input name="pass" type="password" id="inputPassword" class="login-page" placeholder="Password" required="">
 
-        <label for="inputPassword" class="sr-only">Email</label>
-        <input name="password" type="password" id="inputPassword" class="login-page" placeholder="Email" required="">
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input name="email" type="password" id="inputEmail" class="login-page" placeholder="Email" required="">
 
-        <button type="submit" id="registerbutt">Register</button>
+	<label for="inputPath" class="sr-only">Avatar Link</label>
+        <input name="lnk" type="text" id="inputPath" class="login-page" placeholder="Path/URL" required="">
 
+		<input type = "submit" value = "Register!">
       </div>
     </div>
   </div>
-
+</form>
 </main>
