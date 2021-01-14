@@ -2,84 +2,142 @@
 
 /* Base CSS */
 body {
-  font-family: Roboto, Helvetica, sans-serif;
-  margin: 0;
-  background-color: #eee;
+ font-family: Roboto, Helvetica, sans-serif;
+ margin: 0;
+ background-color: #fff;
 }
+
+
+
+.site-title{
+  font:fantasy;
+}
+
 
 a {
-  text-decoration: none;
+ text-decoration: none;
 }
 
+div.login.card{
+  padding:100px;
+}
+
+div.account.card{
+  padding: 5px, 35px;
+
+}
+
+div.rcard{
+  padding:100px;
+}
+
+
+.cent{
+ margin: 0;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ -ms-transform: translate(-50%, -50%);
+ transform: translate(-50%, -50%);
+}
+
+
+div.column{
+  background-color:#2299c3
+}
+
+
 .site-title {
-  margin: 0;
-  padding: 10px 20px;
-  font-size: 30px;
-  font-weight: 100;
-  background-color: #A8A8A8;
-  color: #000000;
+ margin: 0;
+ padding: 10px 20px;
+ font-size: 50px;
+ font-weight: 1000;
+background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+ color: linear-gradient(22deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);;
 }
 
 .navbar {
-  background-color: #7A7A7A;
-  font-size: 18px;
-  line-height: 22px;
+ background-color: #2299c3;
+ font-size: 18px;
+ line-height: 22px;
 }
 
 .navlist {
-  margin: 0 0 0 20px;
-  padding: 0;
+ margin: 0 0 0 20px;
+ padding: 0;
 }
 
 .navitem {
-  display: inline-block;
+ display: inline-block;
+}
+
+.ava_box{
+  margin: 10px 10px 10px 10px;
+}
+.ava_pic{
+width:120px;
+height:120px;
 }
 
 a {
-  color: #343434;
+ color: #343434;
 }
 
 a:hover,
 a:focus {
-  color: #F07221;
+ color: rgba(222,181,92,1);
+   text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  font-weight:1000;
+
 }
 
 a:focus {
-  outline: none;
+ outline: none;
 }
 
 .navlink a {
-  padding: 8px 10px;
-  display: inline-block;
+ padding: 8px 10px;
+ display: inline-block;
+}
+
+
+div.f_row{
+  background-color:#2299c3
 }
 
 
 #pageBackground {
-  background-color: #3D3D3D
+background: rgb(34,153,195);
+background: linear-gradient(176deg, rgba(34,153,195,1) 0%, rgba(222,181,92,1) 100%);
 }
 
 * {
-  box-sizing: border-box;
+ box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+ font-family: Arial, Helvetica, sans-serif;
 }
 
 .f_row {
-  display: flex;
+ display: flex;
 }
 
 .f_column {
-  flex: 50%;
-  margin: 10px 10px 10px 10px
+ flex: 50%;
+ margin: 10px 10px 10px 10px
 }
 
 /* Float four columns side by side */
 .column {
-  float: left;
-  width: 100%;
-  padding: 10px 10px 10px 10px;
+ float: left;
+ width: 100%;
+ padding: 10px 10px 10px 10px;
 }
 
 /* Remove extra left and right margins, due to padding in columns */
@@ -87,62 +145,177 @@ body {
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+ content: "";
+ display: table;
+ clear: both;
 }
 
 /* Style the counter cards */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+ padding: 16px;
+ text-align: center;
+ background-color: #f1f1f1;
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
+ .column {
+   width: 100%;
+   display: block;
+   margin-bottom: 20px;
+ }
 }
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+ display: none;
+ position: absolute;
+ background-color: #f9f9f9;
+ min-width: 160px;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+ float: none;
+ color: black;
+ padding: 12px 16px;
+ text-decoration: none;
+ display: block;
+ text-align: left;
 }
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd;
+ background-color: #ddd;
 }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-  display: block;
-}
-/* The dropdown container */
-.dropdown {
-  overflow: hidden;
-  margin: 0 0 0 0px;
-  padding: 0;
-  display: inline-block;
+ display: block;
 }
 
+.login-page {
+  z-index: 2;
+ position: relative;
+ height: auto;
+ -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+ padding: 10px;
+ font-size: 16px;
+}
+
+.btn-block{
+ margin-top: 10px;
+ padding: 10px;
+ font-size: 16px;
+
+}
+
+.critterone{
+  z-index: 2;
+ position: relative;
+ height: auto;
+ -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+ padding: 10px;
+ font-size: 15px;
+}
+
+.crittertwo{
+  z-index: 2;
+ position: relative;
+ height: auto;
+ -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+ padding: 10px;
+ font-size: 15px;
+
+}
+
+.battlesearchbar{
+  z-index: 2;
+ position: relative;
+ height: auto;
+ -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+ padding: 10px;
+ font-size: 15px;
+ text-align: center;
+
+}
+.searchButton{
+ margin-top: 10px;
+ padding: 10px;
+ font-size: 16px;
+
+}
+
+.vote{
+  z-index: 2;
+ position: relative;
+ height: auto;
+ -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+ padding: 10px;
+ font-size: 15px;
+}
+
+#Signin-button:hover{
+  color: #01F84B;
+  text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 5px 25px rgba(70, 226, 31, 0.4);
+}
+
+div.registerPage{
+  padding:100px;
+  color:white;
+}
+
+#searchButt:hover{
+  color: #22ACEC;
+  text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 5px 25px rgba(31, 35, 226, 0.4);
+}
+
+#registerbutt:hover{
+  color: #22EC33;
+  text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 5px 25px rgba(24, 161, 59, 0.4);
+
+}
+
+.vote:hover{
+  color: #01F84B;
+  text-shadow:0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 5px 25px rgba(70, 226, 31, 0.4);
+}
+
+.error{
+  color: crimson;
+  text-align: center;
+
+}

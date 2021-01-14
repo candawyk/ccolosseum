@@ -1,16 +1,17 @@
 <header>
-  <a href="/"><h1 class="site-title">Critter Colosseum</h1></a>
+  <a href="/"><h1 class="site-title">🐟 Critter Colosseum 🐳</h1></a>
 
   <nav class="navbar">
     <ul class="navlist">
-      <li class="navitem navlink active"><a href="/">Home</a></li>
+      <li class="navitem navlink active" id="navbarlist"><a href="/">Home</a></li>
       <li class="navitem navlink">
-	<div class="dropdown">
+	<div class="dropdown" id="navbarlist">
     	<a href="#">Account</a>
 	<div class="dropdown-content">
-      	<a href="/account">Account</a>
+      	<a id="goToAcnt">Account</a>
       	<a href="/login">Login</a>
       	<a href="/registration">Register</a>
+	<a id="lgbtn">Logout</a>
     	</div>
   	</div>
 
@@ -18,9 +19,10 @@
 
 
 
-      <li class="navitem navlink"><a href="/battle/display">View Battles</a></li>
-      <li class="navitem navlink"><a href="/battle/create">Start a Battle</a></li>
-      <li class="navitem navlink"><input type="text" id="fname" name="fname"><button type="button">Search!</button></li>
+      <li class="navitem navlink" id="navbarlist"><a href="/battle/display">View Battles</a></li>
+      <li class="navitem navlink" id="navbarlist"><a href="/battle/create">Start a Battle</a></li>
+      <li class="navitem navlink" id="navbarlist"><input type="text" class="battlesearchbar" id="bsearch" name="bsearch" placeholder="Battle Search...">
+      <button type="button" class="searchButton" id="searchButt"> Search! </button></li>
 
     </ul>
   </nav>
